@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Proyeto.Models.MateriaImpartidaModel>
+
+@{
+    ViewData["Title"] = "Materia Impartida";
+}
+
+<link rel="stylesheet" href='~/css/StyleSheet1.css' />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+<link rel="stylesheet" href='~/css/footerFelcidades.css' />
+<style>
+    body {
+        background-color: #f7f7f7;
+        font-family: Arial, sans-serif;
+    }
+
+    h1 {
+        text-align: center;
+        margin-top: 20px;
+    }
+</style>
+
+<div class="container">
+    <h1>Materia Impartida</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <p>
+                <a class="btn btn-primary" asp-action="Crear">Nuevo</a>
+            </p>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Carrera</th>
+                            <th>Materia</th>
+                            <th>Grupo</th>
+                            <!--
+                            <th>Fecha Cuatrimestre</th>
+                            -->
+                            <th>URL del Documento</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.CarreraModel.Nombre)</td>
+                                <td>@Html.DisplayFor(modelItem => item.MateriaAdmin.NombreMat)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Grupo)</td>
+                                <!--
+                                <td>@Html.DisplayFor(modelItem => item.FechaCuatri)</td>
+                                -->
+                                <td>@Html.DisplayFor(modelItem => item.UrlDocumento)</td>
+                                <td>
+                                    @Html.ActionLink("Editar", "Editar", new { id = item.IdMateria }, new { @class = "btn btn-info btn-sm" })
+                                    @Html.ActionLink("Detalles", "Detalle", new { id = item.IdMateria }, new { @class = "btn btn-primary btn-sm" })
+                                    @Html.ActionLink("Eliminar", "Eliminar", new { id = item.IdMateria }, new { @class = "btn btn-danger btn-sm" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Proyeto.Models.TipoCuentaModel>
+
+@{
+    ViewData["Title"] = "Tipo cuenta";
+    
+}
+
+
+<link rel="stylesheet" href='~/css/StyleSheet1.css' />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+<link rel="stylesheet" href='~/css/footerFelcidades.css' />
+
+
+<h1>Tipo Cuenta</h1>
+<div class="row">
+<p>
+    <a asp-action="Create">Nuevo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>                    
+               @Html.DisplayNameFor(model => model.IdTipo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+          
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+           
+            <td>
+                @Html.ActionLink("Editar", "Edit", new {  id=item.IdTipo  }) |
+                    @Html.ActionLink("Ver", "Details", new {  id=item.IdTipo  }) |
+                    @Html.ActionLink("Eliminar", "Delete", new {  id=item.IdTipo  })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
